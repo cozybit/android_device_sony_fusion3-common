@@ -574,6 +574,15 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
+service start_mesh /system/bin/mesh_tool start_mesh
+    socket wpa_mesh1 dgram 660 wifi wifi u:object_r:wpa_socket:s0
+    disabled
+    oneshot
+
+service stop_mesh /system/bin/mesh_tool stop_mesh
+    disabled
+    oneshot
+
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class main
     disabled
